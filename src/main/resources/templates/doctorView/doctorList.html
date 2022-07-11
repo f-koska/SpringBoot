@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="../../static/fontawesome-free-5.15.4-web/css/all.css" />
+    <link rel="stylesheet" href="../../static/fontawesome-free-5.15.4-web/css/all.css" />
+    <title>Doctors</title>
+</head>
+
+<body>
+<nav>
+    <ul>
+        <a href="/doctors">Doctors</a>
+        <a href="/patients">Patients</a>
+    </ul>
+</nav>
+
+<main>
+    <table class="table-list">
+        <thead>
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Specialization</th>
+            <th>Salary</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="doc: ${doctors}">
+            <td th:text="${doc.firstName}"/>
+            <td th:text="${doc.lastName}"/>
+            <td th:text="${doc.specialization}"/>
+            <td th:text="${doc.salary}"/>
+            <td>
+                <ul>
+                    <li><a href=""><i class="fas fa-edit"></i></a> </li>
+                    <li><a href=""><i class="fas fa-info-circle"></i></a> </li>
+                    <li><a href=""><i class="fas fa-times"></i></a> </li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>
