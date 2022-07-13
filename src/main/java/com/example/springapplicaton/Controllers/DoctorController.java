@@ -30,7 +30,6 @@ public class DoctorController {
     }
 
     @GetMapping("/add")
-    @ResponseStatus(HttpStatus.OK)
     public String getDoctorForm(Model model){
         List<Specialization> specializations = doctorService.getAllSpecialization();
         model.addAttribute("specializations", specializations);
@@ -38,15 +37,8 @@ public class DoctorController {
         return "doctorView/doctorForm";
     }
 
-    @GetMapping("/{doctorId}")
-    public Doctor getDoctorById(@PathVariable("doctorId") Long doctorId){
-        return doctorService.getDoctorById(doctorId);
-    }
-
     @PostMapping("/add")
     public String addNewDoctor(@ModelAttribute Doctor doctor){
-        System.out.println(doctor.getFirstName());
-        System.out.println("21312j23oi12joio2ij1");
         doctorService.addNewDoctor(doctor);
         return "redirect:/doctors";
     }
@@ -54,20 +46,5 @@ public class DoctorController {
     @InitBinder("doctor")
     public void initBinderDoctor(WebDataBinder webDataBinder){
     }
-
-//    @PutMapping("/edit/{doctorId}")
-//    public void updateDoctor(@PathVariable Long doctorId, @RequestBody Doctor updatedDoctor){
-//        Doctor doctor = doctorRepository.findById(doctorId).get();
-//
-//        if(doctor!=null){
-//            doctor.setFirstName(updatedDoctor.getFirstName());
-//            doctor.setLastName(updatedDoctor.getLastName());
-//            doctor.setSalary(updatedDoctor.getSalary());
-//
-//            doctorRepository.save(doctor);
-//        }
-//
-//    }
-
 
 }
